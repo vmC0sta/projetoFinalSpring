@@ -51,12 +51,7 @@ public class EstadoController implements Controller<Estado> {
         try {
             Estado estadoX = optionalEstado.get();
             estadoX.setDescricao(estado.getDescricao());
-
-            Pais pais = new Pais();
-            pais.setId(estado.getPais().getId());
-            pais.setDescricao(estado.getPais().getDescricao());
-
-            estadoX.setPais(pais);
+            estadoX.setPais(estado.getPais());
             estadoRepository.save(estadoX);
             return ResponseEntity.status(HttpStatus.OK).body(estadoX);
         } catch (Exception e) {
