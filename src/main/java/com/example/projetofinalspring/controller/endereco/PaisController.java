@@ -5,10 +5,7 @@ import com.example.projetofinalspring.domain.endereco.Pais;
 import com.example.projetofinalspring.repository.PaisRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +20,9 @@ public class PaisController implements Controller<Pais> {
 
     @PostMapping("/cadastrar")
     @Override
-    public ResponseEntity<Pais> salvar(Pais pais) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(paisRepository.save(pais));
+    public ResponseEntity<Pais> salvar(@RequestBody Pais pais) {
+        paisRepository.save(pais);
+        return ResponseEntity.status(HttpStatus.CREATED).body(pais);
     }
 
     @GetMapping("/consultar")

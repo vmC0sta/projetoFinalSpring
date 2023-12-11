@@ -10,7 +10,6 @@ public class Pais {
     private Long id;
     @Column
     private String descricao;
-
     public Pais() {
     }
 
