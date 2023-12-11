@@ -1,5 +1,6 @@
 package com.example.projetofinalspring.domain.produto;
 
+<<<<<<< HEAD
 import jakarta.persistence.*;
 
 @Entity
