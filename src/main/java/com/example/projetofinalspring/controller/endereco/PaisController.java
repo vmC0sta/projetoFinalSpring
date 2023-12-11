@@ -2,7 +2,7 @@ package com.example.projetofinalspring.controller.endereco;
 
 import com.example.projetofinalspring.controller.Controller;
 import com.example.projetofinalspring.domain.endereco.Pais;
-import com.example.projetofinalspring.repository.PaisRepository;
+import com.example.projetofinalspring.repository.endereco.PaisRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

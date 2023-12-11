@@ -1,4 +1,4 @@
-package com.example.projetofinalspring.repository;
+package com.example.projetofinalspring.repository.endereco;
 
 import com.example.projetofinalspring.domain.endereco.Pais;
 import org.springframework.data.jpa.repository.JpaRepository;
