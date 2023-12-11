@@ -20,7 +20,7 @@ import com.example.projetofinalspring.domain.produto.UnidadeMedida;
 import com.example.projetofinalspring.repository.produto.UnidadeMedidaRepository;
 
 @RestController
-@RequestMapping("elevate/categorias")
+@RequestMapping("elevate/unidadeMedida")
 public class UnidadeMedidaController implements Controller<UnidadeMedida> {
 
 	@Autowired
