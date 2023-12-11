@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("elevate/pais")
@@ -31,18 +32,42 @@ public class PaisController implements Controller<Pais> {
         return ResponseEntity.status(HttpStatus.OK).body(paisRepository.findAll());
     }
 
+    @GetMapping("/consultar/{id}")
     @Override
-    public ResponseEntity<Object> consultar(Long id) {
-        return null;
+    public ResponseEntity<Object> consultar(@PathVariable("id") Long id) {
+        Optional<Pais> optionalPais = paisRepository.findById(id);
+        try{
+            Pais pais = optionalPais.get();
+            return ResponseEntity.status(HttpStatus.OK).body(pais);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pais não encontrado");
+        }
     }
 
+    @PutMapping("/alterar/{id}")
     @Override
-    public ResponseEntity<Object> alterar(Long id, Pais pais) {
-        return null;
+    public ResponseEntity<Object> alterar(@PathVariable("id") Long id, @RequestBody Pais pais) {
+        Optional<Pais> optionalPais = paisRepository.findById(id);
+        try{
+            Pais paisX = optionalPais.get();
+            paisX.setDescricao(pais.getDescricao());
+            paisRepository.save(paisX);
+            return ResponseEntity.status(HttpStatus.OK).body(paisX);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("País não encontrado");
+        }
     }
 
+    @DeleteMapping("excluir/{id}")
     @Override
-    public ResponseEntity<Object> excluir(Long id) {
-        return null;
+    public ResponseEntity<Object> excluir(@PathVariable("id") Long id) {
+        Optional<Pais> optionalPais = paisRepository.findById(id);
+        try {
+            Pais pais = optionalPais.get();
+            paisRepository.delete(pais);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("País não encontrado");
+        }
     }
 }
